@@ -34,4 +34,3 @@ class Password:
 
     def generate_password(self):
         return ''.join(random.choice(self.get_characters()) for _ in range(self.length))
-

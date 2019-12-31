@@ -25,7 +25,13 @@ class Gui:
         self.app.display()
 
     def get_password(self):
-        password = Password(20, True, True, True, True).generate_password()
+        password = Password(
+            20,
+            self.checkbox_lowers.value,
+            self.checkbox_uppers.value,
+            self.checkbox_numbers.value,
+            self.checkbox_specials.value
+        ).generate_password()
         self.update_password_field(password)
 
     def update_password_field(self, password):
