@@ -2,6 +2,7 @@ from guizero import Text, CheckBox, PushButton, Box, Slider
 from settings import Settings
 from password import Password
 from app import MyApp
+from checkbox import MyCheckBox
 
 
 class Gui:
@@ -13,41 +14,22 @@ class Gui:
         self.button = PushButton(self.app, command=self.get_password, text='get password')
         self.password_length_slider = Slider(self.app)
         self.checkbox_box = Box(self.app, border=1)
-        self.checkbox_lowers = CheckBox(self.checkbox_box, text='lowercase')
-        self.checkbox_uppers = CheckBox(self.checkbox_box, text='uppercase')
-        self.checkbox_numbers = CheckBox(self.checkbox_box, text='numbers')
-        self.checkbox_specials = CheckBox(self.checkbox_box, text='special')
-
-        self.checkbox_lowers.value = 1
-        # self.checkbox_box.align = 'bottom'
-        self.checkbox_box.width = 'fill'
+        self.checkbox_lowers = MyCheckBox(self.checkbox_box, text='lowercase', value=1)
+        self.checkbox_uppers = MyCheckBox(self.checkbox_box, text='uppercase')
+        self.checkbox_numbers = MyCheckBox(self.checkbox_box, text='numbers')
+        self.checkbox_specials = MyCheckBox(self.checkbox_box, text='special')
 
     def run_gui(self):
         while True:
             self._display_gui()
 
     def _display_gui(self):
-        # self.app.font = 'helvetica'
-        # self.app.text_size = '20'
-        # self.app.bg = '#FFF8F0'
         self.password_field.height = 'fill'
         self.password_field.width = 'fill'
         self.button.bg = '#92140C '
         self.button.text_color = '#FFF8F0'
         self.button.align = 'bottom'
         self.button.width = 'fill'
-        self.checkbox_lowers.bg = '#111D4A'
-        self.checkbox_lowers.text_color = '#FFF8F0'
-        self.checkbox_lowers.width = 'fill'
-        self.checkbox_uppers.bg = '#111D4A'
-        self.checkbox_uppers.text_color = '#FFF8F0'
-        self.checkbox_uppers.width = 'fill'
-        self.checkbox_numbers.bg = '#111D4A'
-        self.checkbox_numbers.text_color = '#FFF8F0'
-        self.checkbox_numbers.width = 'fill'
-        self.checkbox_specials.bg = '#111D4A'
-        self.checkbox_specials.text_color = '#FFF8F0'
-        self.checkbox_specials.width = 'fill'
         self.app.display()
 
     def get_password(self):
