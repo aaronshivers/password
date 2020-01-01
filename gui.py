@@ -1,4 +1,4 @@
-from guizero import Text, Box, Slider
+from guizero import Text, Box, Slider, TextBox
 from password import Password
 from app import MyApp
 from checkbox import MyCheckBox
@@ -9,7 +9,7 @@ class Gui:
     def __init__(self, password=''):
         self.app = MyApp()
         self.title = Text(self.app, text='Password Generator')
-        self.password_field = Text(self.app, text=password, height='fill', width='fill')
+        self.password_field = TextBox(self.app, text=password, height=4, width='fill', multiline=True)
         self.button = MyButton(self.app, command=self.get_password)
         self.password_length_slider = Slider(self.app)
         self.checkbox_container = Box(self.app, border=1)
