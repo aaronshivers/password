@@ -12,26 +12,22 @@ class Gui:
         self.password_field = Text(self.app, text=password, height='fill', width='fill')
         self.button = MyButton(self.app, command=self.get_password)
         self.password_length_slider = Slider(self.app)
-        self.checkbox_box = Box(self.app, border=1)
-        self.checkbox_lowers = MyCheckBox(self.checkbox_box, text='lowercase', value=1)
-        self.checkbox_uppers = MyCheckBox(self.checkbox_box, text='uppercase')
-        self.checkbox_numbers = MyCheckBox(self.checkbox_box, text='numbers')
-        self.checkbox_specials = MyCheckBox(self.checkbox_box, text='special')
+        self.checkbox_container = Box(self.app, border=1)
+        self.has_lowers_checkbox = MyCheckBox(self.checkbox_container, text='lowercase', value=1)
+        self.has_uppers_checkbox = MyCheckBox(self.checkbox_container, text='uppercase')
+        self.has_numbers_checkbox = MyCheckBox(self.checkbox_container, text='numbers')
+        self.has_specials_checkbox = MyCheckBox(self.checkbox_container, text='special')
 
-    def run_gui(self):
-        while True:
-            self._display_gui()
-
-    def _display_gui(self):
+    def display_gui(self):
         self.app.display()
 
     def get_password(self):
         password = Password(
             self.password_length_slider.value,
-            self.checkbox_lowers.value,
-            self.checkbox_uppers.value,
-            self.checkbox_numbers.value,
-            self.checkbox_specials.value
+            self.has_lowers_checkbox.value,
+            self.has_uppers_checkbox.value,
+            self.has_numbers_checkbox.value,
+            self.has_specials_checkbox.value
         ).generate_password()
         self.update_password_field(password)
 
