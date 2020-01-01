@@ -1,12 +1,13 @@
-from guizero import App, Text, CheckBox, PushButton, Box, Slider
+from guizero import Text, CheckBox, PushButton, Box, Slider
 from settings import Settings
 from password import Password
+from app import MyApp
 
 
 class Gui:
     def __init__(self, password=''):
         # self.settings = Settings()
-        self.app = App(title='Password Generator')
+        self.app = MyApp()
         self.title = Text(self.app, text='Password Generator')
         self.password_field = Text(self.app, text=password)
         self.button = PushButton(self.app, command=self.get_password, text='get password')
@@ -26,9 +27,9 @@ class Gui:
             self._display_gui()
 
     def _display_gui(self):
-        self.app.font = 'helvetica'
-        self.app.text_size = '20'
-        self.app.bg = '#FFF8F0'
+        # self.app.font = 'helvetica'
+        # self.app.text_size = '20'
+        # self.app.bg = '#FFF8F0'
         self.password_field.height = 'fill'
         self.password_field.width = 'fill'
         self.button.bg = '#92140C '
