@@ -3,20 +3,26 @@ from password import Password
 from app import MyApp
 from checkbox import MyCheckBox
 from button import MyButton
+from settings import Settings
 
 
 class Gui:
     def __init__(self, password=''):
         self.app = MyApp()
+        self.settings = Settings()
         self.title = Text(self.app, text='Password Generator')
         self.password_field = TextBox(self.app, text=password, height=4, width='fill', multiline=True)
-        self.button = MyButton(self.app, command=self.get_password)
-        self.password_length_slider = Slider(self.app)
-        self.checkbox_container = Box(self.app, border=1)
-        self.has_lowers_checkbox = MyCheckBox(self.checkbox_container, text='lowercase', value=1)
-        self.has_uppers_checkbox = MyCheckBox(self.checkbox_container, text='uppercase')
-        self.has_numbers_checkbox = MyCheckBox(self.checkbox_container, text='numbers')
-        self.has_specials_checkbox = MyCheckBox(self.checkbox_container, text='special')
+        self.input_container = Box(self.app, border=1, align='bottom')
+        self.password_length_slider = Slider(self.input_container, width='fill')
+        self.button = MyButton(self.input_container, command=self.get_password)
+        self.has_lowers_checkbox = MyCheckBox(self.input_container, text='lowercase', value=1)
+        self.has_uppers_checkbox = MyCheckBox(self.input_container, text='uppercase')
+        self.has_numbers_checkbox = MyCheckBox(self.input_container, text='numbers')
+        self.has_specials_checkbox = MyCheckBox(self.input_container, text='special')
+
+        self.password_length_slider.bg = self.settings.secondary
+        self.password_length_slider.text_color = self.settings.button_text
+        self.input_container.width = 'fill'
 
     def display_gui(self):
         self.app.display()

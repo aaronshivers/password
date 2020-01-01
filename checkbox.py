@@ -9,5 +9,5 @@ class MyCheckBox(CheckBox):
         self.value = value
         self.width = 'fill'
         self.text = text.capitalize()
-        self.bg = self.settings.button_color
+        self.bg = self.settings.secondary
         self.text_color = self.settings.button_text
